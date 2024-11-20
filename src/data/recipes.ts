@@ -39,6 +39,13 @@ export const recipes: Recipe[] = [
       glutenFree: false,
     },
     matchPercentage: 85,
+    nutritionalValues: {
+      calories: 450,
+      protein: 12,
+      carbs: 65,
+      fat: 18,
+      fiber: 4
+    }
   },
   {
     id: '2',
@@ -68,6 +75,13 @@ export const recipes: Recipe[] = [
       glutenFree: true,
     },
     matchPercentage: 92,
+    nutritionalValues: {
+      calories: 320,
+      protein: 38,
+      carbs: 8,
+      fat: 15,
+      fiber: 3
+    }
   },
   {
     id: '3',
@@ -97,6 +111,13 @@ export const recipes: Recipe[] = [
       glutenFree: true,
     },
     matchPercentage: 78,
+    nutritionalValues: {
+      calories: 580,
+      protein: 20,
+      carbs: 85,
+      fat: 22,
+      fiber: 15
+    }
   },
   {
     id: '4',
@@ -126,6 +147,13 @@ export const recipes: Recipe[] = [
       glutenFree: false,
     },
     matchPercentage: 95,
+    nutritionalValues: {
+      calories: 650,
+      protein: 45,
+      carbs: 35,
+      fat: 38,
+      fiber: 2
+    }
   },
   {
     id: '5',
@@ -155,6 +183,13 @@ export const recipes: Recipe[] = [
       glutenFree: true,
     },
     matchPercentage: 88,
+    nutritionalValues: {
+      calories: 380,
+      protein: 15,
+      carbs: 48,
+      fat: 16,
+      fiber: 7
+    }
   },
   {
     id: '6',
@@ -184,6 +219,13 @@ export const recipes: Recipe[] = [
       glutenFree: true,
     },
     matchPercentage: 82,
+    nutritionalValues: {
+      calories: 420,
+      protein: 14,
+      carbs: 58,
+      fat: 16,
+      fiber: 4
+    }
   },
   {
     id: '7',
@@ -213,6 +255,13 @@ export const recipes: Recipe[] = [
       glutenFree: false,
     },
     matchPercentage: 90,
+    nutritionalValues: {
+      calories: 280,
+      protein: 12,
+      carbs: 38,
+      fat: 10,
+      fiber: 2
+    }
   },
   {
     id: '8',
@@ -242,6 +291,13 @@ export const recipes: Recipe[] = [
       glutenFree: true,
     },
     matchPercentage: 87,
+    nutritionalValues: {
+      calories: 520,
+      protein: 32,
+      carbs: 65,
+      fat: 18,
+      fiber: 6
+    }
   },
   {
     id: '9',
@@ -271,6 +327,13 @@ export const recipes: Recipe[] = [
       glutenFree: true,
     },
     matchPercentage: 94,
+    nutritionalValues: {
+      calories: 220,
+      protein: 15,
+      carbs: 25,
+      fat: 8,
+      fiber: 6
+    }
   },
   {
     id: '10',
@@ -300,5 +363,12 @@ export const recipes: Recipe[] = [
       glutenFree: true,
     },
     matchPercentage: 96,
+    nutritionalValues: {
+      calories: 380,
+      protein: 8,
+      carbs: 82,
+      fat: 6,
+      fiber: 9
+    }
   },
 ];
