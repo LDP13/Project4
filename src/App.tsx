@@ -22,10 +22,12 @@ export default function App() {
     mealType: 'all',
     dietary: 'none',
   });
+  const [currentSort, setCurrentSort] = useState('match');
+  const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('desc');
   const [selectedRecipe, setSelectedRecipe] = useState<Recipe | null>(null);
   const [showFullRecipe, setShowFullRecipe] = useState(false);
   const [servings, setServings] = useState<number>(0);
-  const [currentUserId] = useState('user-1'); // En production, ceci viendrait d'un système d'authentification
+  const [currentUserId] = useState('user-1');
 
   const handleAddIngredient = useCallback((ingredient: Ingredient) => {
     if (!ingredients.some((ing) => ing.name.toLowerCase() === ingredient.name.toLowerCase())) {
@@ -48,6 +50,15 @@ export default function App() {
   const handleFilterChange = useCallback((type: string, value: string) => {
     setFilters(prev => ({ ...prev, [type]: value }));
   }, []);
+
+  const handleSortChange = useCallback((value: string) => {
+    if (currentSort === value) {
+      setSortDirection(prev => prev === 'asc' ? 'desc' : 'asc');
+    } else {
+      setCurrentSort(value);
+      setSortDirection('desc');
+    }
+  }, [currentSort]);
 
   const handleViewFullRecipe = useCallback(() => {
     if (selectedRecipe) {
@@ -157,8 +168,30 @@ export default function App() {
 
         return ingredients.length === 0 || matchPercentage > 0;
       })
-      .sort((a, b) => b.matchPercentage - a.matchPercentage);
-  }, [ingredients, filters, recipes, calculateMatchPercentage]);
+      .sort((a, b) => {
+        let comparison = 0;
+        
+        switch (currentSort) {
+          case 'time':
+            comparison = (a.prepTime + a.cookTime) - (b.prepTime + b.cookTime);
+            break;
+          case 'calories':
+            comparison = a.nutritionalValues.calories - b.nutritionalValues.calories;
+            break;
+          case 'rating':
+            const aRating = a.averageRating || 0;
+            const bRating = b.averageRating || 0;
+            comparison = bRating - aRating;
+            break;
+          case 'match':
+          default:
+            comparison = b.matchPercentage - a.matchPercentage;
+            break;
+        }
+
+        return sortDirection === 'asc' ? comparison : -comparison;
+      });
+  }, [ingredients, filters, recipes, calculateMatchPercentage, currentSort, sortDirection]);
 
   if (showFullRecipe && selectedRecipe) {
     return (
@@ -198,7 +231,10 @@ export default function App() {
             </div>
             <Filters
               onFilterChange={handleFilterChange}
+              onSortChange={handleSortChange}
               selectedFilters={filters}
+              currentSort={currentSort}
+              sortDirection={sortDirection}
             />
           </div>
 

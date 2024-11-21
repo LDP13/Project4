@@ -2,6 +2,7 @@ import React, { useState, useCallback } from 'react';
 import { Star, Trash2 } from 'lucide-react';
 import { Comment } from '../types/recipe';
 import clsx from 'clsx';
+import ConfirmDialog from './ConfirmDialog';
 
 interface Props {
   comments: Comment[];
@@ -14,6 +15,7 @@ export default function Comments({ comments, onAddComment, onDeleteComment, curr
   const [newComment, setNewComment] = useState('');
   const [rating, setRating] = useState(0);
   const [hoveredRating, setHoveredRating] = useState(0);
+  const [commentToDelete, setCommentToDelete] = useState<string | null>(null);
 
   const handleSubmit = useCallback((e: React.FormEvent) => {
     e.preventDefault();
@@ -113,7 +115,7 @@ export default function Comments({ comments, onAddComment, onDeleteComment, curr
                 </div>
                 {comment.userId === currentUserId && (
                   <button
-                    onClick={() => onDeleteComment(comment.id)}
+                    onClick={() => setCommentToDelete(comment.id)}
                     className="text-red-500 hover:text-red-600 transition-colors"
                     title="Supprimer le commentaire"
                   >
@@ -127,6 +129,18 @@ export default function Comments({ comments, onAddComment, onDeleteComment, curr
           </div>
         ))}
       </div>
+
+      <ConfirmDialog
+        isOpen={!!commentToDelete}
+        onClose={() => setCommentToDelete(null)}
+        onConfirm={() => {
+          if (commentToDelete) {
+            onDeleteComment(commentToDelete);
+          }
+        }}
+        title="Supprimer le commentaire"
+        message="Êtes-vous sûr de vouloir supprimer ce commentaire ? Cette action est irréversible."
+      />
     </div>
   );
 }
