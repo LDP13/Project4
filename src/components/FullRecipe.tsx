@@ -1,8 +1,9 @@
 import React from 'react';
-import { Clock, Users, ChevronLeft, Printer } from 'lucide-react';
+import { Clock, Users, ChevronLeft, Printer, Star } from 'lucide-react';
 import { Recipe } from '../types/recipe';
 import ProgressiveImage from './ProgressiveImage';
 import NutritionalValues from './NutritionalValues';
+import Comments from './Comments';
 import clsx from 'clsx';
 
 interface Props {
@@ -10,13 +11,32 @@ interface Props {
   onBack: () => void;
   servings: number;
   onServingsChange: (servings: number) => void;
+  onAddComment: (recipeId: string, content: string, rating: number) => void;
+  onDeleteComment: (recipeId: string, commentId: string) => void;
+  currentUserId: string;
 }
 
-export default function FullRecipe({ recipe, onBack, servings, onServingsChange }: Props) {
+export default function FullRecipe({
+  recipe,
+  onBack,
+  servings,
+  onServingsChange,
+  onAddComment,
+  onDeleteComment,
+  currentUserId
+}: Props) {
   const adjustAmount = (amount?: number, unit?: string) => {
     if (!amount) return '';
     const adjusted = (amount * servings) / recipe.servings;
     return `${adjusted % 1 === 0 ? adjusted : adjusted.toFixed(1)} ${unit || ''}`;
+  };
+
+  const handleAddComment = (content: string, rating: number) => {
+    onAddComment(recipe.id, content, rating);
+  };
+
+  const handleDeleteComment = (commentId: string) => {
+    onDeleteComment(recipe.id, commentId);
   };
 
   const handlePrint = () => {
@@ -25,7 +45,6 @@ export default function FullRecipe({ recipe, onBack, servings, onServingsChange 
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Header */}
       <div className="sticky top-0 z-10 bg-white border-b print:hidden">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
@@ -34,22 +53,20 @@ export default function FullRecipe({ recipe, onBack, servings, onServingsChange 
               className="flex items-center gap-2 text-gray-600 hover:text-gray-900"
             >
               <ChevronLeft className="w-5 h-5" />
-              <span>Back to recipes</span>
+              <span>Retour aux recettes</span>
             </button>
             <button
               onClick={handlePrint}
               className="flex items-center gap-2 text-gray-600 hover:text-gray-900"
             >
               <Printer className="w-5 h-5" />
-              <span className="hidden sm:inline">Print recipe</span>
+              <span className="hidden sm:inline">Imprimer la recette</span>
             </button>
           </div>
         </div>
       </div>
 
-      {/* Main content */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Hero section */}
         <div className="mb-8">
           <div className="aspect-video w-full rounded-lg overflow-hidden mb-6">
             <ProgressiveImage
@@ -58,15 +75,24 @@ export default function FullRecipe({ recipe, onBack, servings, onServingsChange 
               className="w-full h-full object-cover"
             />
           </div>
-          <h1 className="text-3xl font-bold mb-4">{recipe.title}</h1>
+          <div className="flex items-center justify-between mb-4">
+            <h1 className="text-3xl font-bold">{recipe.title}</h1>
+            {recipe.averageRating && (
+              <div className="flex items-center gap-2">
+                <Star className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                <span className="font-medium">{recipe.averageRating.toFixed(1)}</span>
+                <span className="text-gray-500">({recipe.comments.length})</span>
+              </div>
+            )}
+          </div>
           <div className="flex flex-wrap items-center gap-6 text-gray-600 mb-4">
             <div className="flex items-center gap-2">
               <Clock className="w-5 h-5" />
-              <span>Prep: {recipe.prepTime} min</span>
+              <span>Préparation: {recipe.prepTime} min</span>
             </div>
             <div className="flex items-center gap-2">
               <Clock className="w-5 h-5" />
-              <span>Cook: {recipe.cookTime} min</span>
+              <span>Cuisson: {recipe.cookTime} min</span>
             </div>
             <div className="flex items-center gap-2">
               <Users className="w-5 h-5" />
@@ -77,7 +103,7 @@ export default function FullRecipe({ recipe, onBack, servings, onServingsChange 
                 >
                   -
                 </button>
-                <span>{servings} servings</span>
+                <span>{servings} portions</span>
                 <button
                   onClick={() => onServingsChange(servings + 1)}
                   className="p-1 hover:bg-gray-100 rounded"
@@ -96,22 +122,22 @@ export default function FullRecipe({ recipe, onBack, servings, onServingsChange 
                 'bg-red-100 text-red-800': recipe.difficulty === 'hard',
               }
             )}>
-              {recipe.difficulty.charAt(0).toUpperCase() + recipe.difficulty.slice(1)}
+              {recipe.difficulty === 'easy' ? 'Facile' : recipe.difficulty === 'medium' ? 'Moyen' : 'Difficile'}
             </span>
             {recipe.dietary.vegan ? (
               <span className="px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
-                Vegan
+                Végétarien
               </span>
             ) : (
               recipe.dietary.vegetarian && (
                 <span className="px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
-                  Vegetarian
+                  Végétarien
                 </span>
               )
             )}
             {recipe.dietary.glutenFree && (
               <span className="px-3 py-1 rounded-full text-sm font-medium bg-yellow-100 text-yellow-800">
-                Gluten Free
+                Sans Gluten
               </span>
             )}
           </div>
@@ -123,11 +149,9 @@ export default function FullRecipe({ recipe, onBack, servings, onServingsChange 
           />
         </div>
 
-        {/* Two-column layout */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Ingredients */}
           <div className="lg:col-span-1">
-            <h2 className="text-xl font-semibold mb-4">Ingredients</h2>
+            <h2 className="text-xl font-semibold mb-4">Ingrédients</h2>
             <ul className="space-y-3">
               {recipe.ingredients.map((ingredient) => (
                 <li
@@ -143,7 +167,6 @@ export default function FullRecipe({ recipe, onBack, servings, onServingsChange 
             </ul>
           </div>
 
-          {/* Instructions */}
           <div className="lg:col-span-2">
             <h2 className="text-xl font-semibold mb-4">Instructions</h2>
             <ol className="space-y-6">
@@ -157,6 +180,16 @@ export default function FullRecipe({ recipe, onBack, servings, onServingsChange 
               ))}
             </ol>
           </div>
+        </div>
+
+        <div className="mt-12">
+          <h2 className="text-xl font-semibold mb-6">Commentaires</h2>
+          <Comments 
+            comments={recipe.comments}
+            onAddComment={handleAddComment}
+            onDeleteComment={handleDeleteComment}
+            currentUserId={currentUserId}
+          />
         </div>
       </div>
     </div>

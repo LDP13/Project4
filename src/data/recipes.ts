@@ -371,4 +371,315 @@ export const recipes: Recipe[] = [
       fiber: 9
     }
   },
+  {
+    id: '11',
+    title: 'Lemon Herb Chicken',
+    imageUrl: 'photo11',
+    prepTime: 10,
+    cookTime: 25,
+    difficulty: 'easy',
+    servings: 4,
+    mealType: 'dinner',
+    ingredients: [
+      { id: '51', name: 'Chicken Thighs', category: 'meats', amount: 600, unit: 'g' },
+      { id: '52', name: 'Lemon Juice', category: 'other', amount: 3, unit: 'tbsp' },
+      { id: '53', name: 'Garlic', category: 'vegetables', amount: 2, unit: 'cloves' },
+      { id: '54', name: 'Olive Oil', category: 'other', amount: 2, unit: 'tbsp' },
+      { id: '55', name: 'Parsley', category: 'herbs', amount: 10, unit: 'g' },
+    ],
+    instructions: [
+      'Marinate chicken with lemon juice, garlic, and herbs.',
+      'Heat oil and sear chicken until golden.',
+      'Bake in oven until cooked through.',
+      'Serve garnished with parsley.',
+    ],
+    dietary: {
+      vegetarian: false,
+      vegan: false,
+      glutenFree: true,
+    },
+    nutritionalValues: {
+      calories: 320,
+      protein: 28,
+      carbs: 2,
+      fat: 22,
+      fiber: 0
+    }
+  },
+  {
+    id: '12',
+    title: 'Sweet Potato Curry',
+    imageUrl: 'photo12',
+    prepTime: 15,
+    cookTime: 30,
+    difficulty: 'medium',
+    servings: 4,
+    mealType: 'dinner',
+    ingredients: [
+      { id: '56', name: 'Sweet Potatoes', category: 'vegetables', amount: 500, unit: 'g' },
+      { id: '57', name: 'Coconut Milk', category: 'other', amount: 400, unit: 'ml' },
+      { id: '58', name: 'Onions', category: 'vegetables', amount: 1, unit: 'medium' },
+      { id: '59', name: 'Curry Powder', category: 'other', amount: 2, unit: 'tsp' },
+      { id: '60', name: 'Spinach', category: 'vegetables', amount: 100, unit: 'g' },
+    ],
+    instructions: [
+      'Sauté onions until soft.',
+      'Add sweet potatoes and curry powder.',
+      'Pour coconut milk and simmer.',
+      'Stir in spinach and cook until wilted.',
+    ],
+    dietary: {
+      vegetarian: true,
+      vegan: true,
+      glutenFree: true,
+    },
+    nutritionalValues: {
+      calories: 350,
+      protein: 5,
+      carbs: 50,
+      fat: 14,
+      fiber: 8
+    }
+  },
+  {
+    id: '12',
+    title: 'Sweet Potato Curry',
+    imageUrl: 'photo12',
+    prepTime: 15,
+    cookTime: 30,
+    difficulty: 'medium',
+    servings: 4,
+    mealType: 'dinner',
+    ingredients: [
+      { id: '56', name: 'Sweet Potatoes', category: 'vegetables', amount: 500, unit: 'g' },
+      { id: '57', name: 'Coconut Milk', category: 'other', amount: 400, unit: 'ml' },
+      { id: '58', name: 'Onions', category: 'vegetables', amount: 1, unit: 'medium' },
+      { id: '59', name: 'Curry Powder', category: 'other', amount: 2, unit: 'tsp' },
+      { id: '60', name: 'Spinach', category: 'vegetables', amount: 100, unit: 'g' },
+    ],
+    instructions: [
+      'Sauté onions until soft.',
+      'Add sweet potatoes and curry powder.',
+      'Pour coconut milk and simmer.',
+      'Stir in spinach and cook until wilted.',
+    ],
+    dietary: {
+      vegetarian: true,
+      vegan: true,
+      glutenFree: true,
+    },
+    nutritionalValues: {
+      calories: 350,
+      protein: 5,
+      carbs: 50,
+      fat: 14,
+      fiber: 8
+    }
+  },{
+    id: '14',
+    title: 'Avocado Toast',
+    imageUrl: 'photo14',
+    prepTime: 5,
+    cookTime: 0,
+    difficulty: 'easy',
+    servings: 1,
+    mealType: 'breakfast',
+    ingredients: [
+      { id: '66', name: 'Avocado', category: 'vegetables', amount: 1, unit: 'medium' },
+      { id: '67', name: 'Bread', category: 'grains', amount: 1, unit: 'slice' },
+      { id: '68', name: 'Lemon Juice', category: 'other', amount: 1, unit: 'tsp' },
+      { id: '69', name: 'Salt', category: 'other', amount: 1, unit: 'pinch' },
+      { id: '70', name: 'Pepper', category: 'other', amount: 1, unit: 'pinch' },
+    ],
+    instructions: [
+      'Toast the bread.',
+      'Mash avocado and mix with lemon juice, salt, and pepper.',
+      'Spread avocado mixture on toast and serve.',
+    ],
+    dietary: {
+      vegetarian: true,
+      vegan: true,
+      glutenFree: false,
+    },
+    nutritionalValues: {
+      calories: 210,
+      protein: 4,
+      carbs: 18,
+      fat: 15,
+      fiber: 6
+    }
+  },
+  {
+    id: '15',
+    title: 'Spinach and Feta Omelette',
+    imageUrl: 'photo15',
+    prepTime: 5,
+    cookTime: 10,
+    difficulty: 'easy',
+    servings: 2,
+    mealType: 'breakfast',
+    ingredients: [
+      { id: '71', name: 'Eggs', category: 'other', amount: 4, unit: 'large' },
+      { id: '72', name: 'Spinach', category: 'vegetables', amount: 100, unit: 'g' },
+      { id: '73', name: 'Feta Cheese', category: 'dairy', amount: 50, unit: 'g' },
+      { id: '74', name: 'Butter', category: 'dairy', amount: 1, unit: 'tbsp' },
+      { id: '75', name: 'Salt', category: 'other', amount: 1, unit: 'pinch' },
+    ],
+    instructions: [
+      'Whisk eggs with salt.',
+      'Sauté spinach in butter until wilted.',
+      'Pour eggs over spinach and sprinkle feta on top.',
+      'Cook until set and serve.',
+    ],
+    dietary: {
+      vegetarian: true,
+      vegan: false,
+      glutenFree: true,
+    },
+    nutritionalValues: {
+      calories: 250,
+      protein: 18,
+      carbs: 2,
+      fat: 18,
+      fiber: 1
+    }
+  },
+  {
+    id: '16',
+    title: 'Caprese Salad',
+    imageUrl: 'photo16',
+    prepTime: 10,
+    cookTime: 0,
+    difficulty: 'easy',
+    servings: 2,
+    mealType: 'lunch',
+    ingredients: [
+      { id: '76', name: 'Tomatoes', category: 'vegetables', amount: 2, unit: 'medium' },
+      { id: '77', name: 'Mozzarella', category: 'dairy', amount: 125, unit: 'g' },
+      { id: '78', name: 'Basil', category: 'herbs', amount: 10, unit: 'g' },
+      { id: '79', name: 'Olive Oil', category: 'other', amount: 2, unit: 'tbsp' },
+      { id: '80', name: 'Balsamic Vinegar', category: 'other', amount: 1, unit: 'tbsp' },
+    ],
+    instructions: [
+      'Slice tomatoes and mozzarella.',
+      'Layer slices on a plate with basil leaves.',
+      'Drizzle with olive oil and balsamic vinegar.',
+      'Serve immediately.',
+    ],
+    dietary: {
+      vegetarian: true,
+      vegan: false,
+      glutenFree: true,
+    },
+    nutritionalValues: {
+      calories: 220,
+      protein: 12,
+      carbs: 4,
+      fat: 18,
+      fiber: 1
+    }
+  },
+  {
+    id: '17',
+    title: 'Beef Stir-Fry',
+    imageUrl: 'photo17',
+    prepTime: 15,
+    cookTime: 10,
+    difficulty: 'medium',
+    servings: 4,
+    mealType: 'dinner',
+    ingredients: [
+      { id: '81', name: 'Beef Strips', category: 'meats', amount: 400, unit: 'g' },
+      { id: '82', name: 'Mixed Vegetables', category: 'vegetables', amount: 300, unit: 'g' },
+      { id: '83', name: 'Soy Sauce', category: 'other', amount: 2, unit: 'tbsp' },
+      { id: '84', name: 'Ginger', category: 'vegetables', amount: 1, unit: 'thumb' },
+      { id: '85', name: 'Garlic', category: 'vegetables', amount: 2, unit: 'cloves' },
+    ],
+    instructions: [
+      'Marinate beef with soy sauce, garlic, and ginger.',
+      'Stir-fry beef until browned.',
+      'Add vegetables and cook until tender.',
+      'Serve hot over rice.',
+    ],
+    dietary: {
+      vegetarian: false,
+      vegan: false,
+      glutenFree: false,
+    },
+    nutritionalValues: {
+      calories: 350,
+      protein: 28,
+      carbs: 12,
+      fat: 20,
+      fiber: 3
+    }
+  },
+  {
+    id: '18',
+    title: 'Greek Yogurt Parfait',
+    imageUrl: 'photo18',
+    prepTime: 5,
+    cookTime: 0,
+    difficulty: 'easy',
+    servings: 1,
+    mealType: 'breakfast',
+    ingredients: [
+      { id: '86', name: 'Greek Yogurt', category: 'dairy', amount: 150, unit: 'g' },
+      { id: '87', name: 'Granola', category: 'grains', amount: 30, unit: 'g' },
+      { id: '88', name: 'Berries', category: 'fruits', amount: 50, unit: 'g' },
+      { id: '89', name: 'Honey', category: 'other', amount: 1, unit: 'tsp' },
+    ],
+    instructions: [
+      'Layer yogurt, granola, and berries in a glass.',
+      'Drizzle with honey on top.',
+      'Serve chilled.',
+    ],
+    dietary: {
+      vegetarian: true,
+      vegan: false,
+      glutenFree: false,
+    },
+    nutritionalValues: {
+      calories: 220,
+      protein: 10,
+      carbs: 28,
+      fat: 8,
+      fiber: 3
+    }
+  },
+  {
+    id: '19',
+    title: 'Margherita Pizza',
+    imageUrl: 'photo19',
+    prepTime: 15,
+    cookTime: 20,
+    difficulty: 'medium',
+    servings: 2,
+    mealType: 'dinner',
+    ingredients: [
+      { id: '90', name: 'Pizza Dough', category: 'grains', amount: 1, unit: 'piece' },
+      { id: '91', name: 'Tomato Sauce', category: 'vegetables', amount: 100, unit: 'ml' },
+      { id: '92', name: 'Mozzarella', category: 'dairy', amount: 125, unit: 'g' },
+      { id: '93', name: 'Basil', category: 'herbs', amount: 10, unit: 'g' },
+      { id: '94', name: 'Olive Oil', category: 'other', amount: 1, unit: 'tbsp' },
+    ],
+    instructions: [
+      'Roll out pizza dough.',
+      'Spread tomato sauce and top with mozzarella.',
+      'Bake in a preheated oven at 220°C for 15 minutes.',
+      'Garnish with basil and olive oil before serving.',
+    ],
+    dietary: {
+      vegetarian: true,
+      vegan: false,
+      glutenFree: false,
+    },
+    nutritionalValues: {
+      calories: 450,
+      protein: 18,
+      carbs: 50,
+      fat: 18,
+      fiber: 3
+    }
+  },
 ];

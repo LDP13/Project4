@@ -1,14 +1,21 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useCallback } from 'react';
 import { ChefHat } from 'lucide-react';
 import IngredientInput from './components/IngredientInput';
 import RecipeCard from './components/RecipeCard';
 import RecipeModal from './components/RecipeModal';
 import FullRecipe from './components/FullRecipe';
 import Filters from './components/Filters';
-import { Ingredient, Recipe } from './types/recipe';
-import { recipes } from './data/recipes';
+import { Ingredient, Recipe, Comment } from './types/recipe';
+import { recipes as initialRecipes } from './data/recipes';
 
 export default function App() {
+  const [recipes, setRecipes] = useState(() => 
+    initialRecipes.map(recipe => ({
+      ...recipe,
+      comments: [],
+      averageRating: undefined
+    }))
+  );
   const [ingredients, setIngredients] = useState<Ingredient[]>([]);
   const [bookmarkedRecipes, setBookmarkedRecipes] = useState<string[]>([]);
   const [filters, setFilters] = useState({
@@ -18,37 +25,101 @@ export default function App() {
   const [selectedRecipe, setSelectedRecipe] = useState<Recipe | null>(null);
   const [showFullRecipe, setShowFullRecipe] = useState(false);
   const [servings, setServings] = useState<number>(0);
+  const [currentUserId] = useState('user-1'); // En production, ceci viendrait d'un système d'authentification
 
-  const handleAddIngredient = (ingredient: Ingredient) => {
+  const handleAddIngredient = useCallback((ingredient: Ingredient) => {
     if (!ingredients.some((ing) => ing.name.toLowerCase() === ingredient.name.toLowerCase())) {
-      setIngredients([...ingredients, ingredient]);
+      setIngredients(prev => [...prev, ingredient]);
     }
-  };
+  }, [ingredients]);
 
-  const handleRemoveIngredient = (id: string) => {
-    setIngredients(ingredients.filter((ing) => ing.id !== id));
-  };
+  const handleRemoveIngredient = useCallback((id: string) => {
+    setIngredients(prev => prev.filter((ing) => ing.id !== id));
+  }, []);
 
-  const toggleBookmark = (recipeId: string) => {
+  const toggleBookmark = useCallback((recipeId: string) => {
     setBookmarkedRecipes((prev) =>
       prev.includes(recipeId)
         ? prev.filter((id) => id !== recipeId)
         : [...prev, recipeId]
     );
-  };
+  }, []);
 
-  const handleFilterChange = (type: string, value: string) => {
-    setFilters({ ...filters, [type]: value });
-  };
+  const handleFilterChange = useCallback((type: string, value: string) => {
+    setFilters(prev => ({ ...prev, [type]: value }));
+  }, []);
 
-  const handleViewFullRecipe = () => {
+  const handleViewFullRecipe = useCallback(() => {
     if (selectedRecipe) {
       setServings(selectedRecipe.servings);
       setShowFullRecipe(true);
     }
-  };
+  }, [selectedRecipe]);
 
-  const calculateMatchPercentage = (recipe: Recipe): number => {
+  const handleAddComment = useCallback((recipeId: string, content: string, rating: number) => {
+    const newComment: Comment = {
+      id: Date.now().toString(),
+      userId: currentUserId,
+      userName: 'Utilisateur',
+      content,
+      rating,
+      createdAt: new Date().toISOString(),
+    };
+
+    setRecipes(prevRecipes => {
+      const updatedRecipes = prevRecipes.map(recipe => {
+        if (recipe.id === recipeId) {
+          const updatedComments = [...recipe.comments, newComment];
+          const averageRating = updatedComments.reduce((acc, comment) => acc + comment.rating, 0) / updatedComments.length;
+          return {
+            ...recipe,
+            comments: updatedComments,
+            averageRating,
+          };
+        }
+        return recipe;
+      });
+
+      if (selectedRecipe?.id === recipeId) {
+        const updatedRecipe = updatedRecipes.find(r => r.id === recipeId);
+        if (updatedRecipe) {
+          setSelectedRecipe(updatedRecipe);
+        }
+      }
+
+      return updatedRecipes;
+    });
+  }, [selectedRecipe, currentUserId]);
+
+  const handleDeleteComment = useCallback((recipeId: string, commentId: string) => {
+    setRecipes(prevRecipes => {
+      const updatedRecipes = prevRecipes.map(recipe => {
+        if (recipe.id === recipeId) {
+          const updatedComments = recipe.comments.filter(comment => comment.id !== commentId);
+          const averageRating = updatedComments.length > 0
+            ? updatedComments.reduce((acc, comment) => acc + comment.rating, 0) / updatedComments.length
+            : undefined;
+          return {
+            ...recipe,
+            comments: updatedComments,
+            averageRating,
+          };
+        }
+        return recipe;
+      });
+
+      if (selectedRecipe?.id === recipeId) {
+        const updatedRecipe = updatedRecipes.find(r => r.id === recipeId);
+        if (updatedRecipe) {
+          setSelectedRecipe(updatedRecipe);
+        }
+      }
+
+      return updatedRecipes;
+    });
+  }, [selectedRecipe]);
+
+  const calculateMatchPercentage = useCallback((recipe: Recipe): number => {
     if (ingredients.length === 0) return 100;
 
     const userIngredients = ingredients.map(ing => ing.name.toLowerCase());
@@ -62,17 +133,15 @@ export default function App() {
     });
 
     return Math.round((matches / userIngredients.length) * 100);
-  };
+  }, [ingredients]);
 
   const filteredAndSortedRecipes = useMemo(() => {
     return recipes
       .filter((recipe) => {
-        // Filter by meal type
         if (filters.mealType !== 'all' && recipe.mealType !== filters.mealType) {
           return false;
         }
 
-        // Filter by dietary restrictions
         if (filters.dietary === 'vegetarian' && !recipe.dietary.vegetarian) {
           return false;
         }
@@ -83,15 +152,13 @@ export default function App() {
           return false;
         }
 
-        // Calculate match percentage
         const matchPercentage = calculateMatchPercentage(recipe);
         recipe.matchPercentage = matchPercentage;
 
-        // Only show recipes with at least one matching ingredient if ingredients are selected
         return ingredients.length === 0 || matchPercentage > 0;
       })
       .sort((a, b) => b.matchPercentage - a.matchPercentage);
-  }, [ingredients, filters]);
+  }, [ingredients, filters, recipes, calculateMatchPercentage]);
 
   if (showFullRecipe && selectedRecipe) {
     return (
@@ -100,6 +167,9 @@ export default function App() {
         onBack={() => setShowFullRecipe(false)}
         servings={servings}
         onServingsChange={setServings}
+        onAddComment={handleAddComment}
+        onDeleteComment={handleDeleteComment}
+        currentUserId={currentUserId}
       />
     );
   }
@@ -110,7 +180,7 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center gap-2">
             <ChefHat className="w-8 h-8 text-blue-500" />
-            <h1 className="text-2xl font-bold text-gray-900">Recipe Finder</h1>
+            <h1 className="text-2xl font-bold text-gray-900">Recherche de Recettes</h1>
           </div>
         </div>
       </header>
@@ -119,7 +189,7 @@ export default function App() {
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           <div className="lg:col-span-1 space-y-6">
             <div className="bg-white p-4 rounded-lg shadow-sm">
-              <h2 className="text-lg font-semibold mb-4">Your Ingredients</h2>
+              <h2 className="text-lg font-semibold mb-4">Vos Ingrédients</h2>
               <IngredientInput
                 onAddIngredient={handleAddIngredient}
                 onRemoveIngredient={handleRemoveIngredient}
@@ -147,7 +217,7 @@ export default function App() {
               </div>
             ) : (
               <div className="text-center py-12">
-                <p className="text-gray-500">No recipes match your criteria.</p>
+                <p className="text-gray-500">Aucune recette ne correspond à vos critères.</p>
               </div>
             )}
           </div>

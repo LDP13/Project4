@@ -1,5 +1,5 @@
 import React from 'react';
-import { Clock, Users, Bookmark, ChefHat, Flame } from 'lucide-react';
+import { Clock, Users, Bookmark, ChefHat, Flame, Star } from 'lucide-react';
 import { Recipe } from '../types/recipe';
 import clsx from 'clsx';
 import ProgressiveImage from './ProgressiveImage';
@@ -17,7 +17,7 @@ export default function RecipeCard({
   isBookmarked,
   onViewRecipe,
 }: Props) {
-  const { title, imageUrl, prepTime, cookTime, servings, matchPercentage, difficulty, mealType, dietary, nutritionalValues } = recipe;
+  const { title, imageUrl, prepTime, cookTime, servings, matchPercentage, difficulty, mealType, dietary, nutritionalValues, averageRating, comments } = recipe;
 
   return (
     <div 
@@ -53,7 +53,16 @@ export default function RecipeCard({
       </div>
       
       <div className="p-4">
-        <h3 className="text-lg font-semibold mb-2 line-clamp-2">{title}</h3>
+        <div className="flex items-center justify-between mb-2">
+          <h3 className="text-lg font-semibold line-clamp-2">{title}</h3>
+          {averageRating && (
+            <div className="flex items-center gap-1">
+              <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+              <span className="text-sm font-medium">{averageRating.toFixed(1)}</span>
+              <span className="text-xs text-gray-500">({comments.length})</span>
+            </div>
+          )}
+        </div>
         
         <div className="flex items-center gap-4 text-sm text-gray-600 mb-3">
           <div className="flex items-center gap-1">
@@ -62,7 +71,7 @@ export default function RecipeCard({
           </div>
           <div className="flex items-center gap-1">
             <Users className="w-4 h-4" />
-            <span>{servings} servings</span>
+            <span>{servings} portions</span>
           </div>
           <div className="flex items-center gap-1">
             <Flame className="w-4 h-4" />
@@ -79,7 +88,7 @@ export default function RecipeCard({
               'bg-red-100 text-red-800': difficulty === 'hard',
             }
           )}>
-            {difficulty.charAt(0).toUpperCase() + difficulty.slice(1)}
+            {difficulty === 'easy' ? 'Facile' : difficulty === 'medium' ? 'Moyen' : 'Difficile'}
           </span>
           
           <span className={clsx(
@@ -91,7 +100,9 @@ export default function RecipeCard({
               'bg-gray-100 text-gray-800': mealType === 'snack',
             }
           )}>
-            {mealType.charAt(0).toUpperCase() + mealType.slice(1)}
+            {mealType === 'breakfast' ? 'Petit-déjeuner' : 
+             mealType === 'lunch' ? 'Déjeuner' : 
+             mealType === 'dinner' ? 'Dîner' : 'Snack'}
           </span>
 
           {recipe.dietary.vegan ? (
@@ -101,13 +112,13 @@ export default function RecipeCard({
           ) : (
             dietary.vegetarian && (
               <span className="text-sm font-medium px-2 py-1 rounded-full bg-green-100 text-green-800">
-                Vegetarian
+                Végétarien
               </span>
             )
           )}
           {dietary.glutenFree && (
             <span className="text-sm font-medium px-2 py-1 rounded-full bg-yellow-100 text-yellow-800">
-              Gluten Free
+              Sans Gluten
             </span>
           )}
         </div>

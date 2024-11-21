@@ -14,6 +14,15 @@ export interface NutritionalValues {
   fiber: number;
 }
 
+export interface Comment {
+  id: string;
+  userId: string;
+  userName: string;
+  content: string;
+  rating: number;
+  createdAt: string;
+}
+
 export interface Recipe {
   id: string;
   title: string;
@@ -32,4 +41,6 @@ export interface Recipe {
   matchPercentage: number;
   mealType: 'breakfast' | 'lunch' | 'dinner' | 'snack';
   nutritionalValues: NutritionalValues;
+  comments: Comment[];
+  averageRating?: number;
 }
