@@ -64,7 +64,12 @@
       "carbs": "Carbs",
       "fat": "Fat",
       "fiber": "Fiber"
-    }
+    },
+    "viewFull": "View Full Recipe",
+    "dietaryInfo": "Dietary Information",
+    "backToRecipes": "Back to recipes",
+    "print": "Print recipe",
+    "comments": "Comments"
   },
   "comments": {
     "title": "Comments",
@@ -84,5 +89,167 @@
     "print": "Print",
     "viewRecipe": "View recipe",
     "noResults": "No recipes match your criteria."
+  },
+  "recipes": {
+    "1": {
+      "title": "Creamy Mushroom Pasta",
+      "ingredients": {
+        "mushrooms": "Mushrooms",
+        "pasta": "Pasta",
+        "cream": "Cream",
+        "garlic": "Garlic",
+        "parmesan": "Parmesan"
+      },
+      "instructions": [
+        "Boil pasta according to package instructions",
+        "Sauté mushrooms until golden brown",
+        "Add cream and simmer until thickened",
+        "Combine pasta with sauce and serve"
+      ]
+    },
+    "2": {
+      "title": "Grilled Chicken Salad",
+      "ingredients": {
+        "chickenBreast": "Chicken Breast",
+        "lettuce": "Lettuce",
+        "tomatoes": "Tomatoes",
+        "oliveOil": "Olive Oil",
+        "balsamicVinegar": "Balsamic Vinegar"
+      },
+      "instructions": [
+        "Season and grill the chicken",
+        "Chop vegetables",
+        "Combine ingredients",
+        "Add dressing and serve"
+      ]
+    },
+    "3": {
+      "title": "Vegetarian Buddha Bowl",
+      "ingredients": {
+        "quinoa": "Quinoa",
+        "sweetPotato": "Sweet Potato",
+        "chickpeas": "Chickpeas",
+        "kale": "Kale",
+        "avocado": "Avocado"
+      },
+      "instructions": [
+        "Cook quinoa according to package instructions",
+        "Roast sweet potato and chickpeas",
+        "Massage kale with olive oil",
+        "Assemble bowl with all ingredients"
+      ]
+    },
+    "4": {
+      "title": "Classic Beef Burger",
+      "ingredients": {
+        "groundBeef": "Ground Beef",
+        "burgerBuns": "Burger Buns",
+        "cheese": "Cheese",
+        "lettuce": "Lettuce",
+        "tomato": "Tomato"
+      },
+      "instructions": [
+        "Form beef into patties",
+        "Grill until desired doneness",
+        "Add cheese at the end",
+        "Assemble burgers with toppings"
+      ]
+    },
+    "5": {
+      "title": "Mediterranean Quinoa Bowl",
+      "ingredients": {
+        "quinoa": "Quinoa",
+        "cherryTomatoes": "Cherry Tomatoes",
+        "cucumber": "Cucumber",
+        "fetaCheese": "Feta Cheese",
+        "kalamataOlives": "Kalamata Olives"
+      },
+      "instructions": [
+        "Cook quinoa and let it cool",
+        "Chop vegetables",
+        "Mix all ingredients",
+        "Drizzle with olive oil and serve"
+      ]
+    },
+    "6": {
+      "title": "Spicy Thai Noodle Soup",
+      "ingredients": {
+        "riceNoodles": "Rice Noodles",
+        "coconutMilk": "Coconut Milk",
+        "redCurryPaste": "Red Curry Paste",
+        "tofu": "Tofu",
+        "beanSprouts": "Bean Sprouts"
+      },
+      "instructions": [
+        "Cook noodles according to package",
+        "Simmer coconut milk with curry paste",
+        "Add tofu and vegetables",
+        "Combine with noodles and serve"
+      ]
+    },
+    "7": {
+      "title": "Classic French Toast",
+      "ingredients": {
+        "bread": "Bread",
+        "eggs": "Eggs",
+        "milk": "Milk",
+        "vanillaExtract": "Vanilla Extract",
+        "cinnamon": "Cinnamon"
+      },
+      "instructions": [
+        "Whisk eggs, milk, vanilla, and cinnamon",
+        "Dip bread slices in mixture",
+        "Cook on griddle until golden",
+        "Serve with maple syrup"
+      ]
+    },
+    "8": {
+      "title": "Salmon Poke Bowl",
+      "ingredients": {
+        "sushiRice": "Sushi Rice",
+        "freshSalmon": "Fresh Salmon",
+        "avocado": "Avocado",
+        "soySauce": "Soy Sauce",
+        "seaweed": "Seaweed"
+      },
+      "instructions": [
+        "Cook sushi rice and let it cool",
+        "Cut salmon into cubes",
+        "Prepare toppings",
+        "Assemble bowl with all ingredients"
+      ]
+    },
+    "9": {
+      "title": "Vegetable Stir Fry",
+      "ingredients": {
+        "mixedVegetables": "Mixed Vegetables",
+        "tofu": "Tofu",
+        "soySauce": "Soy Sauce",
+        "ginger": "Ginger",
+        "garlic": "Garlic"
+      },
+      "instructions": [
+        "Press and cube tofu",
+        "Chop all vegetables",
+        "Stir fry in wok",
+        "Add sauce and serve"
+      ]
+    },
+    "10": {
+      "title": "Chocolate Banana Smoothie Bowl",
+      "ingredients": {
+        "frozenBananas": "Frozen Bananas",
+        "cocoaPowder": "Cocoa Powder",
+        "almondMilk": "Almond Milk",
+        "honey": "Honey",
+        "granola": "Granola"
+      },
+      "instructions": [
+        "Blend frozen bananas with cocoa and milk",
+        "Add honey to taste",
+        "Pour into bowl",
+        "Top with granola and fresh fruit"
+      ]
+    }
   }
 }

@@ -13,11 +13,13 @@ export default function LanguageSwitcher() {
   return (
     <button
       onClick={toggleLanguage}
-      className="flex items-center gap-2 px-3 py-2 rounded-md hover:bg-gray-100 transition-colors"
+      className="flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-50 hover:bg-blue-100 transition-colors"
       aria-label="Toggle language"
     >
-      <Globe className="w-5 h-5" />
-      <span className="text-sm font-medium uppercase">{i18n.language}</span>
+      <Globe className="w-5 h-5 text-blue-500" />
+      <span className="font-medium text-blue-700">
+        {i18n.language === 'fr' ? 'EN' : 'FR'}
+      </span>
     </button>
   );
 }

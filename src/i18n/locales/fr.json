@@ -64,7 +64,12 @@
       "carbs": "Glucides",
       "fat": "Lipides",
       "fiber": "Fibres"
-    }
+    },
+    "viewFull": "Voir la recette complète",
+    "dietaryInfo": "Informations diététiques",
+    "backToRecipes": "Retour aux recettes",
+    "print": "Imprimer la recette",
+    "comments": "Commentaires"
   },
   "comments": {
     "title": "Commentaires",
@@ -84,5 +89,167 @@
     "print": "Imprimer",
     "viewRecipe": "Voir la recette",
     "noResults": "Aucune recette ne correspond à vos critères."
+  },
+  "recipes": {
+    "1": {
+      "title": "Pâtes aux champignons à la crème",
+      "ingredients": {
+        "mushrooms": "Champignons",
+        "pasta": "Pâtes",
+        "cream": "Crème",
+        "garlic": "Ail",
+        "parmesan": "Parmesan"
+      },
+      "instructions": [
+        "Faire bouillir les pâtes selon les instructions du paquet",
+        "Faire sauter les champignons jusqu'à ce qu'ils soient dorés",
+        "Ajouter la crème et laisser mijoter jusqu'à épaississement",
+        "Mélanger les pâtes avec la sauce et servir"
+      ]
+    },
+    "2": {
+      "title": "Salade de poulet grillé",
+      "ingredients": {
+        "chickenBreast": "Blanc de poulet",
+        "lettuce": "Laitue",
+        "tomatoes": "Tomates",
+        "oliveOil": "Huile d'olive",
+        "balsamicVinegar": "Vinaigre balsamique"
+      },
+      "instructions": [
+        "Assaisonner et griller le poulet",
+        "Couper les légumes",
+        "Combiner les ingrédients",
+        "Ajouter la vinaigrette et servir"
+      ]
+    },
+    "3": {
+      "title": "Buddha Bowl Végétarien",
+      "ingredients": {
+        "quinoa": "Quinoa",
+        "sweetPotato": "Patate douce",
+        "chickpeas": "Pois chiches",
+        "kale": "Chou kale",
+        "avocado": "Avocat"
+      },
+      "instructions": [
+        "Cuire le quinoa selon les instructions",
+        "Rôtir la patate douce et les pois chiches",
+        "Masser le chou kale avec de l'huile d'olive",
+        "Assembler le bol avec tous les ingrédients"
+      ]
+    },
+    "4": {
+      "title": "Burger de Bœuf Classique",
+      "ingredients": {
+        "groundBeef": "Bœuf haché",
+        "burgerBuns": "Pains à burger",
+        "cheese": "Fromage",
+        "lettuce": "Laitue",
+        "tomato": "Tomate"
+      },
+      "instructions": [
+        "Former les steaks hachés",
+        "Griller jusqu'à la cuisson désirée",
+        "Ajouter le fromage à la fin",
+        "Assembler les burgers avec les garnitures"
+      ]
+    },
+    "5": {
+      "title": "Bol de Quinoa Méditerranéen",
+      "ingredients": {
+        "quinoa": "Quinoa",
+        "cherryTomatoes": "Tomates cerises",
+        "cucumber": "Concombre",
+        "fetaCheese": "Fromage feta",
+        "kalamataOlives": "Olives kalamata"
+      },
+      "instructions": [
+        "Cuire le quinoa et laisser refroidir",
+        "Couper les légumes",
+        "Mélanger tous les ingrédients",
+        "Arroser d'huile d'olive et servir"
+      ]
+    },
+    "6": {
+      "title": "Soupe de Nouilles Thaï Épicée",
+      "ingredients": {
+        "riceNoodles": "Nouilles de riz",
+        "coconutMilk": "Lait de coco",
+        "redCurryPaste": "Pâte de curry rouge",
+        "tofu": "Tofu",
+        "beanSprouts": "Pousses de soja"
+      },
+      "instructions": [
+        "Cuire les nouilles selon les instructions",
+        "Faire mijoter le lait de coco avec la pâte de curry",
+        "Ajouter le tofu et les légumes",
+        "Combiner avec les nouilles et servir"
+      ]
+    },
+    "7": {
+      "title": "Pain Perdu Classique",
+      "ingredients": {
+        "bread": "Pain",
+        "eggs": "Œufs",
+        "milk": "Lait",
+        "vanillaExtract": "Extrait de vanille",
+        "cinnamon": "Cannelle"
+      },
+      "instructions": [
+        "Battre les œufs, le lait, la vanille et la cannelle",
+        "Tremper les tranches de pain dans le mélange",
+        "Cuire sur une plaque jusqu'à ce que doré",
+        "Servir avec du sirop d'érable"
+      ]
+    },
+    "8": {
+      "title": "Bol de Poke au Saumon",
+      "ingredients": {
+        "sushiRice": "Riz à sushi",
+        "freshSalmon": "Saumon frais",
+        "avocado": "Avocat",
+        "soySauce": "Sauce soja",
+        "seaweed": "Algues"
+      },
+      "instructions": [
+        "Cuire le riz à sushi et laisser refroidir",
+        "Couper le saumon en cubes",
+        "Préparer les garnitures",
+        "Assembler le bol avec tous les ingrédients"
+      ]
+    },
+    "9": {
+      "title": "Sauté de Légumes",
+      "ingredients": {
+        "mixedVegetables": "Légumes variés",
+        "tofu": "Tofu",
+        "soySauce": "Sauce soja",
+        "ginger": "Gingembre",
+        "garlic": "Ail"
+      },
+      "instructions": [
+        "Presser et couper le tofu en cubes",
+        "Couper tous les légumes",
+        "Faire sauter dans un wok",
+        "Ajouter la sauce et servir"
+      ]
+    },
+    "10": {
+      "title": "Bol Smoothie Chocolat Banane",
+      "ingredients": {
+        "frozenBananas": "Bananes congelées",
+        "cocoaPowder": "Poudre de cacao",
+        "almondMilk": "Lait d'amande",
+        "honey": "Miel",
+        "granola": "Granola"
+      },
+      "instructions": [
+        "Mixer les bananes congelées avec le cacao et le lait",
+        "Ajouter le miel selon le goût",
+        "Verser dans un bol",
+        "Garnir de granola et de fruits frais"
+      ]
+    }
   }
 }

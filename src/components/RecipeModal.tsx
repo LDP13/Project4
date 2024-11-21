@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { X, Clock, Users, ArrowRight, Plus, Minus } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { Recipe } from '../types/recipe';
 import clsx from 'clsx';
 import ProgressiveImage from './ProgressiveImage';
@@ -11,6 +12,7 @@ interface Props {
 }
 
 export default function RecipeModal({ recipe, onClose, onViewDetails }: Props) {
+  const { t } = useTranslation();
   const [servings, setServings] = useState(recipe.servings);
   const modalRef = useRef<HTMLDivElement>(null);
 
@@ -36,6 +38,8 @@ export default function RecipeModal({ recipe, onClose, onViewDetails }: Props) {
     setServings(newServings);
   };
 
+  const recipeTitle = t(`recipes.${recipe.id}.title`) || recipe.title;
+
   return (
     <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 backdrop-blur-sm">
       <div 
@@ -52,16 +56,16 @@ export default function RecipeModal({ recipe, onClose, onViewDetails }: Props) {
         <div className="h-48 relative">
           <ProgressiveImage
             src={recipe.imageUrl}
-            alt={recipe.title}
+            alt={recipeTitle}
             className="w-full h-full"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
           <div className="absolute bottom-4 left-4 right-4">
-            <h2 className="text-2xl font-bold text-white mb-2">{recipe.title}</h2>
+            <h2 className="text-2xl font-bold text-white mb-2">{recipeTitle}</h2>
             <div className="flex items-center gap-4">
               <div className="flex items-center gap-2 text-white/90">
                 <Clock className="w-4 h-4" />
-                <span className="text-sm">{recipe.prepTime + recipe.cookTime} min</span>
+                <span className="text-sm">{recipe.prepTime + recipe.cookTime} {t('recipe.time.min')}</span>
               </div>
               <div className="flex items-center gap-2 text-white/90">
                 <Users className="w-4 h-4" />
@@ -72,7 +76,7 @@ export default function RecipeModal({ recipe, onClose, onViewDetails }: Props) {
                   >
                     <Minus className="w-3 h-3" />
                   </button>
-                  <span className="text-sm">{servings}</span>
+                  <span className="text-sm">{servings} {t('recipe.servings')}</span>
                   <button
                     onClick={() => handleServingsChange(1)}
                     className="p-1 hover:bg-white/20 rounded transition-colors"
@@ -88,7 +92,7 @@ export default function RecipeModal({ recipe, onClose, onViewDetails }: Props) {
         <div className="p-6 overflow-y-auto" style={{ maxHeight: 'calc(90vh - 12rem)' }}>
           <div className="space-y-6">
             <div>
-              <h3 className="font-semibold mb-3">Ingredients</h3>
+              <h3 className="font-semibold mb-3">{t('recipe.ingredients')}</h3>
               <div className="grid grid-cols-1 gap-2">
                 {recipe.ingredients.map((ingredient) => (
                   <div 
@@ -109,7 +113,7 @@ export default function RecipeModal({ recipe, onClose, onViewDetails }: Props) {
                           }
                         )}
                       />
-                      <span>{ingredient.name}</span>
+                      <span>{t(`recipes.${recipe.id}.ingredients.${ingredient.name.toLowerCase()}`) || ingredient.name}</span>
                     </div>
                     <span className="text-sm text-gray-600">
                       {adjustAmount(ingredient.amount, ingredient.unit)}
@@ -120,21 +124,21 @@ export default function RecipeModal({ recipe, onClose, onViewDetails }: Props) {
             </div>
 
             <div>
-              <h3 className="font-semibold mb-2">Dietary Information</h3>
+              <h3 className="font-semibold mb-2">{t('recipe.dietaryInfo')}</h3>
               <div className="flex flex-wrap gap-2">
                 {recipe.dietary.vegetarian && (
                   <span className="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">
-                    Vegetarian
+                    {t('filters.dietary.vegetarian')}
                   </span>
                 )}
                 {recipe.dietary.vegan && (
                   <span className="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">
-                    Vegan
+                    {t('filters.dietary.vegan')}
                   </span>
                 )}
                 {recipe.dietary.glutenFree && (
                   <span className="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-sm">
-                    Gluten Free
+                    {t('filters.dietary.glutenFree')}
                   </span>
                 )}
                 <span className={clsx(
@@ -145,7 +149,7 @@ export default function RecipeModal({ recipe, onClose, onViewDetails }: Props) {
                     'bg-red-100 text-red-800': recipe.difficulty === 'hard',
                   }
                 )}>
-                  {recipe.difficulty}
+                  {t(`recipe.difficulty.${recipe.difficulty}`)}
                 </span>
               </div>
             </div>
@@ -154,7 +158,7 @@ export default function RecipeModal({ recipe, onClose, onViewDetails }: Props) {
               onClick={onViewDetails}
               className="w-full flex items-center justify-center gap-2 bg-blue-500 text-white py-3 px-4 rounded-lg hover:bg-blue-600 transition-colors"
             >
-              View Full Recipe
+              {t('recipe.viewFull')}
               <ArrowRight className="w-5 h-5" />
             </button>
           </div>

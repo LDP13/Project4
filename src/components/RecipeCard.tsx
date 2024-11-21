@@ -19,10 +19,9 @@ export default function RecipeCard({
   onViewRecipe,
 }: Props) {
   const { t } = useTranslation();
-  const { title, imageUrl, prepTime, cookTime, servings, matchPercentage, difficulty, mealType, dietary, nutritionalValues, averageRating, comments, estimatedPrice } = recipe;
+  const { id, title, imageUrl, prepTime, cookTime, servings, matchPercentage, difficulty, mealType, dietary, nutritionalValues, averageRating, comments, estimatedPrice } = recipe;
 
-  const getDifficultyLabel = (diff: string) => t(`recipe.difficulty.${diff}`);
-  const getMealTypeLabel = (type: string) => t(`filters.meals.${type}`);
+  const recipeTitle = t(`recipes.${id}.title`) || title;
 
   return (
     <div 
@@ -32,7 +31,7 @@ export default function RecipeCard({
       <div className="relative h-48">
         <ProgressiveImage
           src={imageUrl}
-          alt={title}
+          alt={recipeTitle}
           className="w-full h-full group-hover:scale-105 transition-transform duration-300"
         />
         <div 
@@ -59,7 +58,7 @@ export default function RecipeCard({
       
       <div className="p-4">
         <div className="flex items-center justify-between mb-2">
-          <h3 className="text-lg font-semibold line-clamp-2">{title}</h3>
+          <h3 className="text-lg font-semibold line-clamp-2">{recipeTitle}</h3>
           {averageRating && (
             <div className="flex items-center gap-1">
               <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
@@ -99,7 +98,7 @@ export default function RecipeCard({
               'bg-red-100 text-red-800': difficulty === 'hard',
             }
           )}>
-            {getDifficultyLabel(difficulty)}
+            {t(`recipe.difficulty.${difficulty}`)}
           </span>
           
           <span className={clsx(
@@ -111,10 +110,10 @@ export default function RecipeCard({
               'bg-gray-100 text-gray-800': mealType === 'snack',
             }
           )}>
-            {getMealTypeLabel(mealType)}
+            {t(`filters.meals.${mealType}`)}
           </span>
 
-          {recipe.dietary.vegan ? (
+          {dietary.vegan ? (
             <span className="text-sm font-medium px-2 py-1 rounded-full bg-green-100 text-green-800">
               {t('filters.dietary.vegan')}
             </span>
