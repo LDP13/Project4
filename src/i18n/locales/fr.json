@@ -1,0 +1,88 @@
+{
+  "header": {
+    "title": "Recherche de Recettes"
+  },
+  "ingredients": {
+    "title": "Vos Ingrédients",
+    "placeholder": "Ajouter des ingrédients...",
+    "category": {
+      "vegetables": "Légumes",
+      "fruits": "Fruits",
+      "meats": "Viandes",
+      "dairy": "Produits laitiers",
+      "grains": "Céréales",
+      "other": "Autre"
+    }
+  },
+  "filters": {
+    "title": "Filtres",
+    "sortBy": "Trier par",
+    "mealType": "Type de repas",
+    "dietaryRestrictions": "Restrictions alimentaires",
+    "sort": {
+      "match": "Meilleure correspondance",
+      "time": "Temps de préparation",
+      "calories": "Calories",
+      "rating": "Note",
+      "price": "Prix"
+    },
+    "meals": {
+      "all": "Tous les repas",
+      "breakfast": "Petit-déjeuner",
+      "lunch": "Déjeuner",
+      "dinner": "Dîner",
+      "snack": "Collation"
+    },
+    "dietary": {
+      "none": "Aucune restriction",
+      "vegetarian": "Végétarien",
+      "vegan": "Vegan",
+      "glutenFree": "Sans gluten"
+    }
+  },
+  "recipe": {
+    "difficulty": {
+      "easy": "Facile",
+      "medium": "Moyen",
+      "hard": "Difficile"
+    },
+    "time": {
+      "prep": "Préparation",
+      "cook": "Cuisson",
+      "total": "Total",
+      "min": "min"
+    },
+    "servings": "portions",
+    "match": "correspondance",
+    "ingredients": "Ingrédients",
+    "instructions": "Instructions",
+    "nutritionalValues": {
+      "title": "Valeurs nutritionnelles",
+      "perServing": "* Valeurs par portion",
+      "calories": "Calories",
+      "protein": "Protéines",
+      "carbs": "Glucides",
+      "fat": "Lipides",
+      "fiber": "Fibres"
+    }
+  },
+  "comments": {
+    "title": "Commentaires",
+    "yourRating": "Votre note",
+    "yourComment": "Votre commentaire",
+    "placeholder": "Partagez votre expérience...",
+    "addButton": "Ajouter un commentaire",
+    "deleteConfirm": {
+      "title": "Supprimer le commentaire",
+      "message": "Êtes-vous sûr de vouloir supprimer ce commentaire ? Cette action est irréversible.",
+      "cancel": "Annuler",
+      "confirm": "Supprimer"
+    }
+  },
+  "common": {
+    "back": "Retour",
+    "print": "Imprimer",
+    "viewRecipe": "Voir la recette",
+    "noResults": "Aucune recette ne correspond à vos critères."
+  }
+}

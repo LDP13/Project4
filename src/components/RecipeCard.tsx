@@ -1,5 +1,6 @@
 import React from 'react';
 import { Clock, Users, Bookmark, ChefHat, Flame, Star, EuroIcon } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { Recipe } from '../types/recipe';
 import clsx from 'clsx';
 import ProgressiveImage from './ProgressiveImage';
@@ -17,7 +18,11 @@ export default function RecipeCard({
   isBookmarked,
   onViewRecipe,
 }: Props) {
+  const { t } = useTranslation();
   const { title, imageUrl, prepTime, cookTime, servings, matchPercentage, difficulty, mealType, dietary, nutritionalValues, averageRating, comments, estimatedPrice } = recipe;
+
+  const getDifficultyLabel = (diff: string) => t(`recipe.difficulty.${diff}`);
+  const getMealTypeLabel = (type: string) => t(`filters.meals.${type}`);
 
   return (
     <div 
@@ -48,7 +53,7 @@ export default function RecipeCard({
         </div>
         <div className="absolute bottom-2 right-2 bg-white px-3 py-1 rounded-full text-sm font-medium flex items-center gap-1">
           <ChefHat className="w-4 h-4 text-blue-500" />
-          <span className="text-blue-500">{matchPercentage}% match</span>
+          <span className="text-blue-500">{matchPercentage}% {t('recipe.match')}</span>
         </div>
       </div>
       
@@ -67,11 +72,11 @@ export default function RecipeCard({
         <div className="flex items-center gap-4 text-sm text-gray-600 mb-3">
           <div className="flex items-center gap-1">
             <Clock className="w-4 h-4" />
-            <span>{prepTime + cookTime} min</span>
+            <span>{prepTime + cookTime} {t('recipe.time.min')}</span>
           </div>
           <div className="flex items-center gap-1">
             <Users className="w-4 h-4" />
-            <span>{servings} portions</span>
+            <span>{servings} {t('recipe.servings')}</span>
           </div>
           <div className="flex items-center gap-1">
             <Flame className="w-4 h-4" />
@@ -94,7 +99,7 @@ export default function RecipeCard({
               'bg-red-100 text-red-800': difficulty === 'hard',
             }
           )}>
-            {difficulty === 'easy' ? 'Facile' : difficulty === 'medium' ? 'Moyen' : 'Difficile'}
+            {getDifficultyLabel(difficulty)}
           </span>
           
           <span className={clsx(
@@ -106,25 +111,23 @@ export default function RecipeCard({
               'bg-gray-100 text-gray-800': mealType === 'snack',
             }
           )}>
-            {mealType === 'breakfast' ? 'Petit-déjeuner' : 
-             mealType === 'lunch' ? 'Déjeuner' : 
-             mealType === 'dinner' ? 'Dîner' : 'Snack'}
+            {getMealTypeLabel(mealType)}
           </span>
 
           {recipe.dietary.vegan ? (
             <span className="text-sm font-medium px-2 py-1 rounded-full bg-green-100 text-green-800">
-              Vegan
+              {t('filters.dietary.vegan')}
             </span>
           ) : (
             dietary.vegetarian && (
               <span className="text-sm font-medium px-2 py-1 rounded-full bg-green-100 text-green-800">
-                Végétarien
+                {t('filters.dietary.vegetarian')}
               </span>
             )
           )}
           {dietary.glutenFree && (
             <span className="text-sm font-medium px-2 py-1 rounded-full bg-yellow-100 text-yellow-800">
-              Sans Gluten
+              {t('filters.dietary.glutenFree')}
             </span>
           )}
         </div>

@@ -1,0 +1,88 @@
+{
+  "header": {
+    "title": "Recipe Search"
+  },
+  "ingredients": {
+    "title": "Your Ingredients",
+    "placeholder": "Add ingredients...",
+    "category": {
+      "vegetables": "Vegetables",
+      "fruits": "Fruits",
+      "meats": "Meats",
+      "dairy": "Dairy",
+      "grains": "Grains",
+      "other": "Other"
+    }
+  },
+  "filters": {
+    "title": "Filters",
+    "sortBy": "Sort by",
+    "mealType": "Meal type",
+    "dietaryRestrictions": "Dietary restrictions",
+    "sort": {
+      "match": "Best match",
+      "time": "Preparation time",
+      "calories": "Calories",
+      "rating": "Rating",
+      "price": "Price"
+    },
+    "meals": {
+      "all": "All meals",
+      "breakfast": "Breakfast",
+      "lunch": "Lunch",
+      "dinner": "Dinner",
+      "snack": "Snack"
+    },
+    "dietary": {
+      "none": "No restrictions",
+      "vegetarian": "Vegetarian",
+      "vegan": "Vegan",
+      "glutenFree": "Gluten free"
+    }
+  },
+  "recipe": {
+    "difficulty": {
+      "easy": "Easy",
+      "medium": "Medium",
+      "hard": "Hard"
+    },
+    "time": {
+      "prep": "Preparation",
+      "cook": "Cooking",
+      "total": "Total",
+      "min": "min"
+    },
+    "servings": "servings",
+    "match": "match",
+    "ingredients": "Ingredients",
+    "instructions": "Instructions",
+    "nutritionalValues": {
+      "title": "Nutritional Values",
+      "perServing": "* Values per serving",
+      "calories": "Calories",
+      "protein": "Protein",
+      "carbs": "Carbs",
+      "fat": "Fat",
+      "fiber": "Fiber"
+    }
+  },
+  "comments": {
+    "title": "Comments",
+    "yourRating": "Your rating",
+    "yourComment": "Your comment",
+    "placeholder": "Share your experience...",
+    "addButton": "Add comment",
+    "deleteConfirm": {
+      "title": "Delete comment",
+      "message": "Are you sure you want to delete this comment? This action cannot be undone.",
+      "cancel": "Cancel",
+      "confirm": "Delete"
+    }
+  },
+  "common": {
+    "back": "Back",
+    "print": "Print",
+    "viewRecipe": "View recipe",
+    "noResults": "No recipes match your criteria."
+  }
+}

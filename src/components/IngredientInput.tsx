@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Plus, X } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { Ingredient } from '../types/recipe';
 import { ingredientSuggestions } from '../data/ingredients';
 import clsx from 'clsx';
@@ -15,6 +16,7 @@ export default function IngredientInput({
   onRemoveIngredient,
   selectedIngredients,
 }: Props) {
+  const { t } = useTranslation();
   const [input, setInput] = useState('');
   const [suggestions, setSuggestions] = useState<typeof ingredientSuggestions>([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
@@ -71,7 +73,7 @@ export default function IngredientInput({
           value={input}
           onChange={(e) => handleInputChange(e.target.value)}
           onFocus={() => input.trim() && setShowSuggestions(true)}
-          placeholder="Add ingredients..."
+          placeholder={t('ingredients.placeholder')}
           className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
         />
         <button
@@ -93,8 +95,8 @@ export default function IngredientInput({
                 className="w-full px-4 py-2 text-left hover:bg-gray-50 flex items-center justify-between"
               >
                 <span>{suggestion.name}</span>
-                <span className="text-sm text-gray-500 capitalize">
-                  {suggestion.category}
+                <span className="text-sm text-gray-500">
+                  {t(`ingredients.category.${suggestion.category}`)}
                 </span>
               </button>
             ))}
