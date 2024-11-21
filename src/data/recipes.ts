@@ -9,6 +9,11 @@ import photo7 from '../images/photo-1484723091739-30a097e8f929.webp';
 import photo8 from '../images/photo-1546069901-ba9599a7e63c.webp';
 import photo9 from '../images/photo-1512058564366-18510be2db19.webp';
 import photo10 from '../images/photo-1490474418585-ba9bad8fd0ea.webp';
+import photo11 from '../images/photo-1604908176997-125f25cc6f3d.webp';
+//import photo12 from '../images/photo-1517604931666-8b4d3672b779.webp';
+import photo13 from '../images/photo-1617093727343-374698b1b08d.webp';
+import photo14 from '../images/photo-1488477181946-6428a0291777.webp';
+import photo15 from '../images/photo-1604068549290-dea0e4a305ca.webp';
 
 export const recipes: Recipe[] = [
   {
@@ -384,7 +389,7 @@ export const recipes: Recipe[] = [
   {
     id: '11',
     title: 'Lemon Herb Chicken',
-    imageUrl: 'photo11',
+    imageUrl: photo11,
     prepTime: 10,
     cookTime: 25,
     difficulty: 'easy',
@@ -457,7 +462,7 @@ export const recipes: Recipe[] = [
   {
     id: '13',
     title: 'Beef Stir-Fry',
-    imageUrl: 'photo13',
+    imageUrl: photo13,
     prepTime: 15,
     cookTime: 10,
     difficulty: 'medium',
@@ -494,7 +499,7 @@ export const recipes: Recipe[] = [
   {
     id: '14',
     title: 'Greek Yogurt Parfait',
-    imageUrl: 'photo14',
+    imageUrl: photo14,
     prepTime: 5,
     cookTime: 0,
     difficulty: 'easy',
@@ -529,7 +534,7 @@ export const recipes: Recipe[] = [
   {
     id: '15',
     title: 'Margherita Pizza',
-    imageUrl: 'photo15',
+    imageUrl: photo15,
     prepTime: 15,
     cookTime: 20,
     difficulty: 'medium',
