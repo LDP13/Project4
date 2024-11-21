@@ -39,12 +39,12 @@ export default function App() {
 
   function getEstimatedPrice(ingredient: Ingredient): number {
     const basePrices: Record<string, number> = {
-      vegetables: 2,
-      fruits: 3,
-      meats: 8,
-      dairy: 3,
-      grains: 2,
-      other: 2
+      vegetables: 0.0025,
+      fruits: 0.003,
+      meats: 0.15,
+      dairy: 0.001,
+      grains: 0.001,
+      other: 0.002
     };
     return basePrices[ingredient.category] || 2;
   }
